@@ -31,6 +31,7 @@ public class MyHooks {
 	@After
 	public void tearDown() {
 		WebDriverManager.removeBroswer();
+		System.out.println("closed...");
 	}
 		
 }
