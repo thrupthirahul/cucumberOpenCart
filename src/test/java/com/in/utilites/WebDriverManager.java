@@ -20,7 +20,6 @@ public class WebDriverManager {
 	}
 
 	public static WebDriver getLocalThreadDriver() {
-
 		return localThreadDriver.get();
 	}
 	

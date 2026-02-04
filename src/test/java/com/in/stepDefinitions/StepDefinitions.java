@@ -1,6 +1,5 @@
 package com.in.stepDefinitions;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.List;
@@ -34,7 +33,7 @@ public class StepDefinitions {
 	
 	{
 		System.out.println("StepDefinitions.enclosing_method()");
-		try(FileInputStream fis= new FileInputStream(new File("src/test/java/com/in/properties/properties.properties"));
+		try(FileInputStream fis= new FileInputStream("src/test/java/com/in/properties/properties.properties");
 				){
 				props= new Properties();
 				props.load(fis);
@@ -50,8 +49,7 @@ public class StepDefinitions {
 		System.out.println("StepDefinations.openBroswer()");
 		driver=WebDriverManager.getLocalThreadDriver();	
 		driver.manage().window().maximize();
-		driver.get(props.getProperty("guruUrl"));
-		//driver.get(props.getProperty("url"));
+		driver.get(props.getProperty("url"));
 		wait= new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
 	
