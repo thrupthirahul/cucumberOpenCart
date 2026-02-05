@@ -1,23 +1,29 @@
 package com.in.testRunner;
 
-import org.junit.runner.RunWith;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.DataProvider;
 
-
-@RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "resources/features",
-		glue = {"com.in.hooks", "com.in.stepDefinitions"},
-		tags="@smoke",
-		monochrome = true, //ignore invalid/weried character in the feature file
-		dryRun= false, // run feature file only
-		stepNotifications = true,
-		plugin = {"pretty",
-				"html:target/cucumber_report.html"
-		}
-		)
-public class TestRunner  {
+        features = "resources/features",
+        glue = {
+                "com.in.hooks",
+                "com.in.stepDefinitions"
+        },
+        tags = "@smoke",
+        monochrome = true,
+        dryRun = false,
+        plugin = {
+                "pretty",
+                "html:target/cucumber_report.html",
+                "json:target/cucumber.json"
+        }
+)
+public class TestRunner extends AbstractTestNGCucumberTests {
 
-	
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
+    }
 }
