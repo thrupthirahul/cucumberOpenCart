@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Cucumber Parallel Suite" parallel="methods" thread-count="2">
+
+    <test name="Cucumber Tests">
+        <classes>
+            <class name="com.in.testRunner.TestRunner"/>
+        </classes>
+    </test>
+
+</suite>
