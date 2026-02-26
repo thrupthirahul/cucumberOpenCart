@@ -1,10 +1,6 @@
 package com.in.utilites;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,16 +8,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class WebDriverManager {
 
 	private static ThreadLocal<WebDriver> localThreadDriver = new ThreadLocal<>();
-	private static FileInputStream fis;
 	private static Properties props;
+	
 	static {
-		try {
-			fis =new FileInputStream("src/test/java/com/in/properties/properties.properties");
-			props=new Properties();
-			props.load(fis);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		props=LoadPropertiesFile.loadFile();
 	}
 
 	public WebDriverManager() {

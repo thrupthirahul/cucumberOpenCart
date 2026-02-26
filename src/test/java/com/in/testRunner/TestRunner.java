@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
                 "com.in.stepDefinitions"
         },
         tags = "@smoke",
-        monochrome = true,
+        monochrome = false,
         dryRun = false,
         plugin = {
                 "pretty",
@@ -22,7 +22,7 @@ import org.testng.annotations.DataProvider;
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = false)
     public Object[][] scenarios() {
         return super.scenarios();
     }

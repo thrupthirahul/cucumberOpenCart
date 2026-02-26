@@ -1,50 +1,61 @@
 package com.in.pageObjects;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 	
-	private WebElement driver;
-
+	private WebDriver driver;
+	private WebDriverWait wait;
+	
 	public LoginPage(WebDriver driver) {
-		PageFactory.initElements(driver, this);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 	
-	@FindBy(xpath="//input[@id='input-email']")
-	private WebElement usernametextfield;
+	// Locators
+	private By usernameTextField = By.id("input-email");
+	private By passwordTextField = By.id("input-password");
+	private By loginButton = By.xpath("//input[@value='Login']");
+	private By validAlertMessage = By.cssSelector("div.alert");
+	private By homepageIcon = By.cssSelector("a[href*='route=common/home']");
 	
-	@FindBy(xpath="//input[@id='input-password']")
-	private WebElement passwordtextfield;
-	
-	@FindBy(xpath="//input[@value='Login']")
-	private WebElement loginButton;
-	
-	
-	@FindBy(xpath="//div[ contains(@class,'alert')]")
-	private WebElement normalAlertMessage;
-	
-	@FindBy(css="a[href*='route=common/home']")
-	private WebElement homepageIcon;
-	
-	public WebElement searchUsernameTextField() {
-		return usernametextfield;
-	}
-	public WebElement searchPasswordTextField() {
-		return passwordtextfield;
-	}
-	public WebElement searchLoginButton() {
-		return loginButton;
-	}
-
-	public WebElement searchNormalAlertMessage() {
-		return normalAlertMessage;
+	// Private Reusable Methods
+	private WebElement getElement(By locator) {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	
-	public WebElement homepageIcon() {
-		return homepageIcon;
+	private WebElement getClickableElement(By locator) {
+		return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 	
+	// Action Methods
+	public void enterUsername(String username) {
+		WebElement element = getElement(usernameTextField);
+		element.clear();
+		element.sendKeys(username);
+	}
+	
+	public void enterPassword(String password) {
+		WebElement element = getElement(passwordTextField);
+		element.clear();
+		element.sendKeys(password);
+	}
+	
+	public void clickLogin() {
+		getClickableElement(loginButton).click();
+	}
+	
+	public String getAlertMessage() {
+		return getElement(validAlertMessage).getText();
+	}
+	
+	public void clickHomeIcon() {
+		getClickableElement(homepageIcon).click();
+	}
 }

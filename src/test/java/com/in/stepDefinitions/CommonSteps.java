@@ -36,8 +36,7 @@ public class CommonSteps {
 	@And("click on home page button")
 	public void click_on_home_page_button() {
 		loginPage = new LoginPage(driver);
-		WebElement homeIcon = wait.until(ExpectedConditions.elementToBeClickable(loginPage.homepageIcon()));
-		homeIcon.click();		
+		loginPage.clickHomeIcon();		
 	}
 	
 }
