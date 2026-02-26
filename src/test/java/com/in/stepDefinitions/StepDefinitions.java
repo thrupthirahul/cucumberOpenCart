@@ -14,14 +14,14 @@ import io.cucumber.java.en.When;
 
 public class StepDefinitions {
 	
-	private static  Properties props;
+	private  Properties props;
 	private  WebDriver driver;
 	private  HomePage homePage;
 	private  LoginPage loginPage;
 	private  MyAccountPage myAccountPage;
 	private  LogoutPage logoutPage;
 
-	static{
+	{
 		props=LoadPropertiesFile.loadFile();
 	}
 	
