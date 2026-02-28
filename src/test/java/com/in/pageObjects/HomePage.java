@@ -61,4 +61,8 @@ public class HomePage {
 	public void clickOnShoppingCartLink() {
 		basePage.click(shoppingCartLink);
 	}
+	
+	public String getTitle() {
+		return driver.getTitle();
+	}
 }

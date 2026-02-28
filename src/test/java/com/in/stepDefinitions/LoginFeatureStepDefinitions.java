@@ -13,8 +13,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginFeatureStepDefinitions {
-	
-	private  Properties props;
+
 	private  WebDriver driver;
 	private  HomePage homePage;
 	private  LoginPage loginPage;
@@ -22,16 +21,11 @@ public class LoginFeatureStepDefinitions {
 	private  LogoutPage logoutPage;
 
 	{
-		props=LoadPropertiesFile.loadFile();
+		
+		driver= WebDriverManager.getLocalThreadDriver();
 	}
 	
-	@Given("open broswer with url")
-	public void open_broswer_with_url() throws Exception{
-		System.out.println("StepDefinations.openBroswer()");
-		driver=WebDriverManager.getLocalThreadDriver();	
-		driver.get(props.getProperty("url"));
-	}
-	
+
 	@When("click on My Account option")
 	public void click_on_my_account_option() {
 		System.out.println("StepDefinitions.click_on_my_account_option()");
