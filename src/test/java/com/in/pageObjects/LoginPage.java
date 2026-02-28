@@ -1,21 +1,17 @@
 package com.in.pageObjects;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 	
 	private WebDriver driver;
-	private WebDriverWait wait;
+	private BasePage basePage;
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		basePage= new BasePage(this.driver);
 	}
 	
 	// Locators
@@ -25,37 +21,29 @@ public class LoginPage {
 	private By validAlertMessage = By.cssSelector("div.alert");
 	private By homepageIcon = By.cssSelector("a[href*='route=common/home']");
 	
-	// Private Reusable Methods
-	private WebElement getElement(By locator) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-	}
 	
-	private WebElement getClickableElement(By locator) {
-		return wait.until(ExpectedConditions.elementToBeClickable(locator));
-	}
 	
-	// Action Methods
 	public void enterUsername(String username) {
-		WebElement element = getElement(usernameTextField);
-		element.clear();
-		element.sendKeys(username);
+		WebElement webElement = basePage.waitForVisibility(usernameTextField);
+		webElement.clear();
+		webElement.sendKeys(username);
 	}
 	
 	public void enterPassword(String password) {
-		WebElement element = getElement(passwordTextField);
-		element.clear();
-		element.sendKeys(password);
+		WebElement webElement = basePage.waitForVisibility(passwordTextField);
+		webElement.clear();
+		webElement.sendKeys(password);
 	}
 	
 	public void clickLogin() {
-		getClickableElement(loginButton).click();
+		basePage.click(loginButton);
 	}
 	
 	public String getAlertMessage() {
-		return getElement(validAlertMessage).getText();
+		return basePage.waitForVisibility(validAlertMessage).getText();
 	}
 	
 	public void clickHomeIcon() {
-		getClickableElement(homepageIcon).click();
+		basePage.click(homepageIcon);
 	}
 }

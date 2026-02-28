@@ -11,8 +11,8 @@ import io.cucumber.java.Before;
 
 public class MyHooks {
 
-	public WebDriver driver;
 	public Properties props;
+	public WebDriver driver;
 
 	public MyHooks() {
 		System.out.println("MyHooks.MyHooks()");

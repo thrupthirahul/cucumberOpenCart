@@ -12,11 +12,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
 	
 	private WebDriver driver;
-	private WebDriverWait wait;
+	//Has-A
+	private BasePage basePage;
 	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
-		this.wait = new WebDriverWait(this.driver,Duration.ofSeconds(10));
+		basePage= new BasePage(this.driver);
 	}
 	
 	// Locators
@@ -25,27 +26,15 @@ public class HomePage {
 	private By myAccountOptions = By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//li");
 	private By searchTextbox = By.xpath("//input[@placeholder='Search']");
 	private By searchButton = By.xpath("//span[@class='input-group-btn']");	
+	private By shoppingCartLink= By.xpath("//span[normalize-space()='Shopping Cart']");
 	
 
-	private WebElement getElement(By locator) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-	}
-	
-	private List<WebElement> getElements(By locator) {
-		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-	}
-	
-	private WebElement getClickableElement(By locator) {
-		return wait.until(ExpectedConditions.elementToBeClickable(locator));
-	}
-	
 	public void clickOnMyAccount(){
-		getClickableElement(myAccount).click();
+		basePage.click(myAccount);
 	}
 	
-
 	public List<String> getMyAccountOptions(){
-		return  getElements(myAccountOptions)
+		return  basePage.waitForVisibilityAllElements(myAccountOptions)
 				.stream()
 				.map(element ->element.getText())
 				.collect(Collectors.toList());
@@ -58,14 +47,18 @@ public class HomePage {
 	}
 	
 	public void clickOnLoginLink() {
-		getClickableElement(loginLink).click();
+		basePage.click(loginLink);
 	}
 	
 	public void enterSearchText(String productName) {
-		getElement(searchTextbox).sendKeys(productName);
+		basePage.type(searchTextbox, productName);
 	}
 
 	public void clickOnSearchButton() {
-		getClickableElement(searchButton).click();
+		basePage.click(searchButton);
+	}
+	
+	public void clickOnShoppingCartLink() {
+		basePage.click(shoppingCartLink);
 	}
 }

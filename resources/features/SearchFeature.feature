@@ -1,7 +1,7 @@
 Feature: Title of your feature
   I want to use search for the mobile products
 
-  @dev
+  @smoke
   Scenario Outline: Search Iphone Mobile 
 		Given open broswer with url
     When search for Product "<SearchTextBox>"
@@ -17,8 +17,8 @@ Feature: Title of your feature
     |	SearchTextBox	|	dropdownOptions	|
 		| Mobile				|	Phones & PDAs		|
     
-  @dev
-  Scenario Outline: Search product that doesn't matches the search criteria.
+  @smoke
+  Scenario Outline: Search product that doesnt matches the search criteria.
 		Given open broswer with url
     When search for Product "<SearchTextBox>"
     And click on home search button
@@ -33,7 +33,7 @@ Feature: Title of your feature
     |	SearchTextBox	|	dropdownOptions	|message																								|
 		| Camera				|	Web Cameras			|There is no product that matches the search criteria.	|
 		
-	@dev
+	@regression
   Scenario Outline: Search product with empty input
 		Given open broswer with url
     When search for Product "<SearchTextBox>"

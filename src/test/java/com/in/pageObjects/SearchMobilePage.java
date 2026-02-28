@@ -1,52 +1,53 @@
 package com.in.pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class SearchMobilePage {
 	
-	WebDriver driver;
+	private WebDriver driver;
+	private BasePage basePage;
 
 	public SearchMobilePage(WebDriver driver) {
-		PageFactory.initElements(driver, this);
+		this.driver=driver;
+		basePage=new BasePage(this.driver);
+	
 	}
 	
-	@FindBy(xpath="//select[@name='category_id']")
-	private WebElement categoriesDropdown;
-	
-	@FindBy(xpath="//input[@id='description']")
-	private WebElement checkBox;
-	
-	
-	@FindBy(xpath="//input[@id='button-search']")
-	private WebElement searchButton;
-	
-	
-	@FindBy(xpath="//img[@title='iPhone']")
-	private WebElement iphone;
+	By categoriesDropdown=By.xpath("//select[@name='category_id']");
+	By checkBox=By.xpath("//input[@id='description']");
+	By searchButton=By.xpath("//input[@id='button-search']");
+	By iphone=By.xpath("//img[@title='iPhone']");
+	By productNotFoundMeassage=By.xpath("//p[starts-with(text(),'There')]");
 
-	@FindBy(xpath="//p[starts-with(text(),'There')]")
-	private WebElement productNotFoundMeassage;
-
-	public WebElement searchcategoriesDropdown() {
-		return categoriesDropdown;
+	
+	private Select getDropDownElement() {
+		return new Select(basePage.waitForVisibility(categoriesDropdown));
 	}
 	
-	public WebElement searchCheckBox() {
-		return checkBox;
-	}
-	public WebElement searchIphone() {
-		return iphone;
+	public void searchIteamOnDropdown(String product) {
+		getDropDownElement().selectByVisibleText(product);
 	}
 	
-	public WebElement searchButton() {
-		return searchButton;
+	public void searchProductItem(String value) {
+		basePage.type(checkBox, value);
+		
+	}
+	public void clickOnCheckBox() {
+		basePage.click(checkBox);
 	}
 	
-	public WebElement productNotFoundMessage() {
-		return productNotFoundMeassage;
+	public void clickOnSearchButton() {
+		basePage.click(searchButton);
+	}
+	
+	public boolean viewProduct() {
+		return basePage.waitForVisibility(iphone).isDisplayed();
+	}
+	
+	public String productNotFoundMessage() {
+		return basePage.waitForVisibility(productNotFoundMeassage).getText();
 	}
 	
 }

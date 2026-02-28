@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
                 "com.in.hooks",
                 "com.in.stepDefinitions"
         },
-        tags = "@smoke",
+        tags = "@smoke or @regression",
         monochrome = false,
         dryRun = false,
         plugin = {

@@ -12,7 +12,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepDefinitions {
+public class LoginFeatureStepDefinitions {
 	
 	private  Properties props;
 	private  WebDriver driver;
