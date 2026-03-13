@@ -21,7 +21,7 @@ public class CommonSteps {
 	Properties props;
 	
 	public CommonSteps() {
-		driver=WebDriverManager.getLocalThreadDriver();
+		driver= new WebDriverManager().getLocalThreadDriver();
 		props=LoadPropertiesFile.loadFile();
 	}
 	

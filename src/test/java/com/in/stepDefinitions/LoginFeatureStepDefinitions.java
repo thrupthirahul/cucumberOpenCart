@@ -1,14 +1,13 @@
 package com.in.stepDefinitions;
 
-import java.util.Properties;
 import org.openqa.selenium.WebDriver;
+
 import com.in.pageObjects.HomePage;
 import com.in.pageObjects.LoginPage;
 import com.in.pageObjects.LogoutPage;
 import com.in.pageObjects.MyAccountPage;
-import com.in.utilites.LoadPropertiesFile;
 import com.in.utilites.WebDriverManager;
-import io.cucumber.java.en.Given;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -19,10 +18,10 @@ public class LoginFeatureStepDefinitions {
 	private  LoginPage loginPage;
 	private  MyAccountPage myAccountPage;
 	private  LogoutPage logoutPage;
-
+	
 	{
 		
-		driver= WebDriverManager.getLocalThreadDriver();
+		driver= new WebDriverManager().getLocalThreadDriver();
 	}
 	
 

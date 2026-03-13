@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
                 "com.in.hooks",
                 "com.in.stepDefinitions"
         },
-        tags = "@smoke or @regression",
+        tags ="@dev1",
         monochrome = false,
         dryRun = false,
         plugin = {
@@ -19,7 +19,7 @@ import org.testng.annotations.DataProvider;
                 "json:target/cucumber.json"
         }
 )
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class TestRunnerTest extends AbstractTestNGCucumberTests {
 
     @Override
     @DataProvider(parallel = false)

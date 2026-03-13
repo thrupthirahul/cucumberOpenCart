@@ -19,7 +19,7 @@ public class ShoppingCartStepDefinations {
 	private  YourStorePage yourStorePage;
     
 	public ShoppingCartStepDefinations() {
-		driver= WebDriverManager.getLocalThreadDriver();
+		driver= new WebDriverManager().getLocalThreadDriver();
 	}
 
     @When("click on shopping cart")

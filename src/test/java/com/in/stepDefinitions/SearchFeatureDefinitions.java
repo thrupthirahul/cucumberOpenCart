@@ -3,10 +3,7 @@ package com.in.stepDefinitions;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.in.pageObjects.HomePage;
 import com.in.pageObjects.SearchMobilePage;
@@ -18,13 +15,12 @@ import io.cucumber.java.en.When;
 public class SearchFeatureDefinitions {
 
 	WebDriver driver;
-	WebDriverWait wait;
 	HomePage homePage;
 	SearchMobilePage searchMobilePage;
 
 	public SearchFeatureDefinitions() {
-		driver= WebDriverManager.getLocalThreadDriver();
-		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		driver= new WebDriverManager().getLocalThreadDriver();
+		
 	}
 
 	@When("search for Product {string}")

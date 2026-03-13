@@ -13,22 +13,25 @@ public class MyHooks {
 
 	public Properties props;
 	public WebDriver driver;
+	public WebDriverManager webDriverManager;
 
 	public MyHooks() {
 		System.out.println("MyHooks.MyHooks()");
+		webDriverManager = new WebDriverManager();
+		props=LoadPropertiesFile.loadFile();
 	}
 
 	@Before
 	public void setup() throws Exception {	
-		props=LoadPropertiesFile.loadFile();
-		WebDriverManager.setLocalThreadDriver(props.getProperty("browserName"));
-		driver=WebDriverManager.getLocalThreadDriver();	
+		System.out.println("start...");
+		webDriverManager.setLocalThreadDriver(props.getProperty("browserName"));
+		driver=webDriverManager.getLocalThreadDriver();	
 		driver.manage().window().maximize();
 	}
 
 	@After
 	public void tearDown() {
-		WebDriverManager.removeBroswer();
+		webDriverManager.removeBroswer();
 		System.out.println("closed...");
 	}
 

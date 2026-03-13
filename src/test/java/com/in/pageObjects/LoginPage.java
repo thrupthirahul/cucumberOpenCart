@@ -24,6 +24,7 @@ public class LoginPage {
 	
 	
 	public void enterUsername(String username) {
+		
 		WebElement webElement = basePage.waitForVisibility(usernameTextField);
 		webElement.clear();
 		webElement.sendKeys(username);

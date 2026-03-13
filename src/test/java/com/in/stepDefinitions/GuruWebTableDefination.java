@@ -19,7 +19,7 @@ public class GuruWebTableDefination {
 	
 	@When("print the data to console")
 	public void print_the_data_to_console() {
-		driver = WebDriverManager.getLocalThreadDriver();
+		driver = driver= new WebDriverManager().getLocalThreadDriver();
 		tableObject= new GuruWebTablePageObjects(driver);
 		int c=tableObject.getColumnSize();
 		int r=tableObject.getRowSize();

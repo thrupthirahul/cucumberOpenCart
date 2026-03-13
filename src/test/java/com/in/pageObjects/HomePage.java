@@ -1,13 +1,10 @@
 package com.in.pageObjects;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
 	
@@ -22,6 +19,7 @@ public class HomePage {
 	
 	// Locators
 	private By myAccount = By.xpath("//a[@title='My Account']");
+	private By registerLink=By.xpath("//a[text() ='Register']");
 	private By loginLink=By.xpath("//a[normalize-space()='Login']");
 	private By myAccountOptions = By.xpath("//ul[@class='dropdown-menu dropdown-menu-right']//li");
 	private By searchTextbox = By.xpath("//input[@placeholder='Search']");
@@ -44,6 +42,10 @@ public class HomePage {
 		return getMyAccountOptions()
 				.stream()
 				.anyMatch(str -> str.equals(searchValue));
+	}
+	
+	public void clickOnRegisterLink() {
+		basePage.click(registerLink);
 	}
 	
 	public void clickOnLoginLink() {
