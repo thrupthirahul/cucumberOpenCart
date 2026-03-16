@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features = "resources/features",
+        features = "src/test/resources/features",
         glue = {
                 "com.in.hooks",
                 "com.in.stepDefinitions"
