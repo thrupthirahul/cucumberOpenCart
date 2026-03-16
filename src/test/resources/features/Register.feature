@@ -1,7 +1,7 @@
 Feature: Registration 
   I want to Register the Account
   
-  @dev1
+  @smoke
   Scenario Outline: Register with the given data
     Given open broswer with url
     When click on My Account option
@@ -22,7 +22,7 @@ Feature: Registration
    |	Rahul 			| Kumar		 | user@test.com				| 9876543210 	| Test@123 | Test@123 				|	Congratulations! Your new account has been successfully created!		|	
 		
 		
-	@dev1
+	@smoke
   Scenario Outline: Register with the existing email
     Given open broswer with url
     When click on My Account option

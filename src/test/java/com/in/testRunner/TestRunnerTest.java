@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
                 "com.in.hooks",
                 "com.in.stepDefinitions"
         },
-        tags ="@dev1",
+        tags ="@smoke",
         monochrome = false,
         dryRun = false,
         plugin = {
