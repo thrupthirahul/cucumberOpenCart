@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
                 "com.in.stepDefinitions"
         },
         tags ="@smoke or @regression",
-        monochrome = false,
+        monochrome = true,
         dryRun = false,
         plugin = {
                 "pretty",
